@@ -1,0 +1,25 @@
+
+<md-sidenav-container fullscreen>
+
+  <md-sidenav #sidenav mode="side" opened="false">
+    <md-nav-list>
+      <a md-list-item (click)="sidenav.close()" routerLink="/"> HOME </a>
+      <a md-list-item (click)="sidenav.close()" routerLink="/about"> ABOUT </a>
+      <a md-list-item (click)="sidenav.close()" routerLink="/profile"> PROFILE </a>
+      <hr>
+
+      <a md-list-item (click)="sidenav.close()"> CLOSE </a>
+    </md-nav-list>
+  </md-sidenav>
+
+  <app-toolbar></app-toolbar>
+
+  <div class="body-margin">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!--
+  <app-footer></app-footer>
+  -->
+
+</md-sidenav-container>
