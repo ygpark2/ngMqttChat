@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { MdInputModule, MdGridListModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -32,6 +33,7 @@ import 'hammerjs';
     FormsModule,
     BrowserAnimationsModule,
     MdGridListModule,
+    FlexLayoutModule,
 
     //3rd party modules
     //MaterialModule.forRoot(),
