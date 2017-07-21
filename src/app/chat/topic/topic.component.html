@@ -1,22 +1,23 @@
 
-<div fxLayout="column" fxFill>
-    <div fxLayout fxFlex >
-        <div class="one" fxFlex="20" fxLayoutAlign="center center"> A </div>
-        <div class="two" fxFlex="80" fxLayoutAlign="center center"> B </div>
-    </div>
-</div>
+<div fxLayout="row" fxFill>
+    <div fxFlex="20%" fxLayoutAlign="center center">
 
-<div class="flex-container">
-	<div fxLayout="row" fxLayoutAlign="start center" class="content">
-		<div class="blocks" fxFlex = "20%">
-      fix(api): support query children on API directives (#290)
-* support DI of flexbox/api Directive classes
-* implement Directive method `activatedValue` getter/setter
-  * to imperatively read current activated input value
-  * to write API values with immediate style updates
-* implement demo using splitters (ngxSplit) with fxLayout and fxFlex layouts
+         Left Menu
+
     </div>
-		<div class="blocks" fxFlex = "60%">2</div>
-		<div class="blocks" fxFlex>3</div>
-	</div>
+    <div fxFlex="80%" fxLayoutAlign="center center"> 
+
+        <div fxLayout="column" fxFill>
+            <div class="one" fxLayoutAlign="center center">
+                Top Bar
+            </div>
+            <div class="two" fxLayoutAlign="center center"> 
+                Chat Content
+            </div>
+            <div class="three" fxLayoutAlign="center center"> 
+                Chat Input
+            </div>
+        </div>
+
+    </div>
 </div>

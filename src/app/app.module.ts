@@ -33,7 +33,6 @@ import 'hammerjs';
     FormsModule,
     BrowserAnimationsModule,
     MdGridListModule,
-    FlexLayoutModule,
 
     //3rd party modules
     //MaterialModule.forRoot(),

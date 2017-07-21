@@ -27,12 +27,18 @@
     </span>
   </md-toolbar>
 
-  <div class="body-margin">
-    <router-outlet></router-outlet>
-  </div>
+  <div fxLayout="row" fxFill>
+    <div fxFlex="100%" fxLayoutAlign="center center"> 
 
-  <!--
-  <app-footer></app-footer>
-  -->
+      <router-outlet></router-outlet>
+
+    </div>
+    <div fxFlex="100%" fxLayoutAlign="center center">
+      Footer
+      <!--
+      <app-footer></app-footer>
+      -->
+    </div>
+  </div>
 
 </md-sidenav-container>
