@@ -1,46 +1,30 @@
 
-<div fxLayout="column" fxLayoutAlign="space-around center">
+<div fxLayout="row" style="margin-top: 150px">
+  <div fxLayout="column" fxLayoutAlign="center center" fxFill>
 
   <md-card class="chat-card">
     <md-card-header>
       <div md-card-avatar class="example-header-image"></div>
-      <md-card-title>Shiba Inu</md-card-title>
-      <md-card-subtitle>Dog Breed</md-card-subtitle>
+      <md-card-title>대화방</md-card-title>
+      <md-card-subtitle>입장</md-card-subtitle>
     </md-card-header>
+    <!--
     <img md-card-image src="assets/img/examples/shiba2.jpg">
+    -->
     <md-card-content>
 
-      <md-input-container class="example-full-width">
+      <md-input-container>
         <input mdInput placeholder="토픽">
       </md-input-container>
-      <md-input-container class="example-full-width">
+      <md-input-container>
         <input mdInput placeholder="사용자 이름">
       </md-input-container>
 
     </md-card-content>
     <md-card-actions>
-      <button md-button>LIKE</button>
-      <button md-button>SHARE</button>
+      <button md-raised-button (click)="enterTopic()">입장</button>
     </md-card-actions>
   </md-card>
 
+  </div>
 </div>
-
-<!--
-<table class="example-full-width" cellspacing="0">
-  <tr>
-    <td>
-      <md-input-container class="example-full-width">
-        <input mdInput placeholder="토픽">
-      </md-input-container>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <md-input-container class="example-full-width">
-        <input mdInput placeholder="사용자 이름">
-      </md-input-container>
-    </td>
-  </tr>
-</table>
--->

@@ -28,16 +28,18 @@
   </md-toolbar>
 
   <div fxLayout="row" fxFill>
-    <div fxFlex="100%" fxLayoutAlign="center center"> 
+    <div fxFlex="100%" fxLayoutAlign="center center" fill-height [footerElement]="footerRef"> 
 
       <router-outlet></router-outlet>
 
     </div>
-    <div fxFlex="100%" fxLayoutAlign="center center">
+    <div fxFlex="100%" fxLayoutAlign="center center" #footerRef>
       Footer
       <!--
       <app-footer></app-footer>
       -->
+
+
     </div>
   </div>
 

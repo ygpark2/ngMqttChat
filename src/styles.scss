@@ -3,7 +3,20 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/icon?family=Roboto");
 
+/*
+deeppurple-amber.css
+indigo-pink.css
+pink-bluegrey.css
+purple-green.css
+*/
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 body {
     font-family: Roboto;
     margin: 0px;
+}
+
+app-root { 
+  min-height: 100%; 
+  display: flex;
 }

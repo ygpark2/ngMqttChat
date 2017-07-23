@@ -5,8 +5,11 @@ import { HttpModule } from '@angular/http';
 
 import { MdInputModule, MdGridListModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FillHeightModule } from 'ngx-fill-height/fill-height.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -32,12 +35,14 @@ import 'hammerjs';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MdGridListModule,
+    MdInputModule,
+    MaterialModule,
+    FillHeightModule,
 
     //3rd party modules
     //MaterialModule.forRoot(),
 
-    //app modules
+    // app modules
     CoreModule,
     SharedModule,
     AppRoutingModule,
