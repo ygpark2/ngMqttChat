@@ -1,3 +1,37 @@
-<p>
-  room works!
-</p>
+
+<div fxLayout="row" fxFill>
+    <div fxFlex="20%" fxLayoutAlign="center center">
+
+      <app-chat-room-left-menu></app-chat-room-left-menu>
+
+    </div>
+    <div fxFlex="80%" fxLayoutAlign="center center"> 
+
+        <div fxLayout="column" fxFill>
+            <div fxFlex="5" fxLayoutAlign="center center">
+                <app-chat-room-top-bar></app-chat-room-top-bar>
+            </div>
+            <div fxFlex="85" fxLayoutAlign="center center"> 
+                Chat Content
+
+                <h1>{{mesage}}</h1>
+                <h1>{{ myMessage }}</h1>
+                <h1>{{(myOtherMessage$ | async)?.payload.toString()}}</h1>
+
+            </div>
+            <div fxFlex="10" fxLayoutAlign="center center">
+
+                <div fxLayout="row" fxFill>
+                    <div fxFlex="85%" fxLayoutAlign="start center">
+                        <textarea #msg mdInput rows="2" cols="120" placeholder="메세지"></textarea>
+                    </div>
+                    <div fxFlex="15%" fxLayoutAlign="start center"> 
+                        <button md-raised-button (click)="sendMsg(msg)">전송</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

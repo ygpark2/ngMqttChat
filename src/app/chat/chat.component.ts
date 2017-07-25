@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
 
+  @Input() roomName: string;
+  @Input() userName: string;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -15,6 +18,7 @@ export class ChatComponent implements OnInit {
 
   public enterTopic() {
     console.log("enter topic!!!!");
-    this.router.navigate(['/chat/topic']);
+    // this.router.navigate(['/chat/topic']);
+    this.router.navigate(['/chat/room', this.roomName]);
   }
 }
