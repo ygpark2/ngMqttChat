@@ -24,7 +24,7 @@ import { ProfileModule } from './profile/profile.module';
 import { ChatModule } from './chat/chat.module';
 
 // required for md-slide-toggle, md-slider, mdTooltip
-import 'hammerjs';
+// import 'hammerjs';
 
 
 @NgModule({

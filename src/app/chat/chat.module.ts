@@ -13,8 +13,8 @@ import { RoomComponent } from './room/room.component';
 import { TopicComponent } from './topic/topic.component';
 import { LeftMenuComponent } from './room/left-menu/left-menu.component';
 import { TopBarComponent } from './room/top-bar/top-bar.component';
-import { ChatContentComponent } from './room/chat-content/chat-content.component';
-import { ChatActionComponent } from './room/chat-action/chat-action.component';
+import { MessageContentComponent } from './room/message-content/message-content.component';
+import { InputActionComponent } from './room/input-action/input-action.component';
 
 export const MQTT_SERVICE_OPTIONS = {
   hostname: 'localhost',
@@ -44,8 +44,8 @@ export function mqttServiceFactory() {
     TopicComponent,
     LeftMenuComponent,
     TopBarComponent,
-    ChatContentComponent,
-    ChatActionComponent
+    MessageContentComponent,
+    InputActionComponent
   ]
 })
 export class ChatModule { }

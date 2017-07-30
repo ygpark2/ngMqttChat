@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { ApiService } from './api.service';
-import { AuthService } from './auth.service';
-import { PostService } from './post.service';
+import { ApiService } from './services/api.service';
+import { SettingsService } from './services/settings.service';
+import { AuthService } from './services/auth.service';
+import { PostService } from './services/post.service';
+import { MqttService } from './services/mqtt.service';
+
 import { JWT } from './jwt';
 import { AuthGuard } from './auth.guard';
 
@@ -15,8 +18,10 @@ import { AuthGuard } from './auth.guard';
   ],
   providers: [
     ApiService,
+    SettingsService,
     AuthService,
     PostService,
+    MqttService,
     JWT,
     AuthGuard
   ]

@@ -4,5 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  username: 'admin',
+  password: '1234',
+  mqttApiEndpoint: '', // 'http://localhost:18083'
+  mtqqBaseTopicName: 'chat/room/'
 };

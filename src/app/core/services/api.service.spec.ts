@@ -4,7 +4,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { HttpModule, BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { APP_CONFIG, DEFAULT_APP_CONFIG} from '../app.config';
+import { APP_CONFIG, DEFAULT_APP_CONFIG} from '../../app.config';
 import { ApiService } from './api.service';
 
 describe('Service: Api', () => {

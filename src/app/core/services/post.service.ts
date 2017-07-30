@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { ApiService } from './api.service';
-import { Post } from './post.model';
-import { Comment } from './comment.model';
+import { Post } from '../models/post.model';
+import { Comment } from '../models/comment.model';
 
 @Injectable()
 export class PostService {

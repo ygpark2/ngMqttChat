@@ -2,7 +2,8 @@ import { Injectable, Inject} from '@angular/core';
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { APP_CONFIG, AppConfig } from '../app.config';
+import { APP_CONFIG, AppConfig } from '../../app.config';
+
 
 @Injectable()
 export class ApiService {
@@ -12,10 +13,20 @@ export class ApiService {
     'Accept': 'application/json'
   });
 
-  private API_URL: string = 'http://localhost:8080/blog-api-cdi/api';
+  private API_URL: string = '';
 
-  constructor(private http: Http/*, @Inject(APP_CONFIG) config: AppConfig*/) {
-    //this.API_URL = config.apiEndpoint;
+  constructor(private http: Http) {
+
+  }
+
+  public setApiUrl(url: string) {
+    this.API_URL = url;
+  }
+
+  public getOpts(path: string, options: RequestOptions): Observable<any> {
+    return this.http.get(`${this.API_URL}${path}`, options)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   public get(path: string, term?: any): Observable<any> {
@@ -26,7 +37,7 @@ export class ApiService {
       Object.keys(term).forEach(key => search.set(key, term[key]));
     }
 
-    return this.http.get(`${this.API_URL}${path}`, { search, headers: this.headers })
+    return this.http.get(`${this.API_URL}${path}`, { params: search, headers: this.headers })
       .map(this.extractData)
       .catch(this.handleError);
   }

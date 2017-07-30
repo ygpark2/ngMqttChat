@@ -11,7 +11,9 @@ export class ChatComponent implements OnInit {
   @Input() roomName: string;
   @Input() userName: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit() {
   }

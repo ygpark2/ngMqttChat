@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, Renderer, HostBinding, Attribute, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { AuthService } from '../core/auth.service';
+import { AuthService } from '../core/services/auth.service';
 
 @Directive({
   selector: '[appShowAuthed]'

@@ -1,0 +1,1 @@
+export enum Writer { USER, AI, ADVISER }

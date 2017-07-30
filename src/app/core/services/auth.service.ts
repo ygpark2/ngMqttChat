@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { ApiService } from './api.service';
-import { JWT } from './jwt';
-import { User } from './user.model';
+import { JWT } from '../jwt';
+import { User } from '../models/user.model';
 
 interface State {
   current: User;
