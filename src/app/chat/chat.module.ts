@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdInputModule, MdGridListModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
-import { MqttMessage, MqttModule, MqttService } from 'ngx-mqtt';
 
 import { CommonModule } from '@angular/common';
 import { ChatRoutingModule } from './chat-routing.module';
@@ -15,27 +14,15 @@ import { LeftMenuComponent } from './room/left-menu/left-menu.component';
 import { TopBarComponent } from './room/top-bar/top-bar.component';
 import { MessageContentComponent } from './room/message-content/message-content.component';
 import { InputActionComponent } from './room/input-action/input-action.component';
-
-export const MQTT_SERVICE_OPTIONS = {
-  hostname: 'localhost',
-  port: 8083,
-  path: '/mqtt'
-};
-
-export function mqttServiceFactory() {
-  return new MqttService(MQTT_SERVICE_OPTIONS);
-}
+import { CreateRoomComponent } from './create-room/create-room.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
-    MqttModule.forRoot({
-      provide: MqttService,
-      useFactory: mqttServiceFactory
-    }),
     ChatRoutingModule
   ],
   declarations: [
@@ -45,7 +32,11 @@ export function mqttServiceFactory() {
     LeftMenuComponent,
     TopBarComponent,
     MessageContentComponent,
-    InputActionComponent
-  ]
+    InputActionComponent,
+    CreateRoomComponent
+  ],
+  entryComponents: [
+    CreateRoomComponent,
+  ],
 })
 export class ChatModule { }

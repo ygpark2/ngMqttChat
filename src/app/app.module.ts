@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { MqttMessage, MqttModule, MqttService } from 'ngx-mqtt';
 import { MdInputModule, MdGridListModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
@@ -26,6 +26,15 @@ import { ChatModule } from './chat/chat.module';
 // required for md-slide-toggle, md-slider, mdTooltip
 // import 'hammerjs';
 
+export const MQTT_SERVICE_OPTIONS = {
+  hostname: 'localhost',
+  port: 8083,
+  path: '/mqtt'
+};
+
+export function mqttServiceFactory() {
+  return new MqttService(MQTT_SERVICE_OPTIONS);
+}
 
 @NgModule({
   declarations: [
@@ -41,7 +50,10 @@ import { ChatModule } from './chat/chat.module';
 
     //3rd party modules
     //MaterialModule.forRoot(),
-
+    MqttModule.forRoot({
+      provide: MqttService,
+      useFactory: mqttServiceFactory
+    }),
     // app modules
     CoreModule,
     SharedModule,

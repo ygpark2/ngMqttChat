@@ -1,0 +1,25 @@
+
+  <md-card class="chat-card">
+    <md-card-header>
+      <div md-card-avatar class="example-header-image"></div>
+      <md-card-title>대화방</md-card-title>
+      <md-card-subtitle>입장</md-card-subtitle>
+    </md-card-header>
+    <!--
+    <img md-card-image src="assets/img/examples/shiba2.jpg">
+    -->
+    <md-card-content>
+
+      <md-input-container>
+        <input mdInput [formControl]="userNameFormControl" placeholder="대화 주제" [(ngModel)]="roomName">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput [formControl]="roomNameFormControl" placeholder="사용자 이름" [(ngModel)]="userName">
+      </md-input-container>
+
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button [disabled]="!isFormValid" (click)="enterTopic()">입장</button>
+      <button md-raised-button md-dialog-close="Cancel">닫기</button>
+    </md-card-actions>
+  </md-card>

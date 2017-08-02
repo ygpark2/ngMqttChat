@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Subscription } from '../../../core/models/mqtt/subscription.model';
-import { MqttService } from '../../../core/services/mqtt.service';
+import { MqttApiService } from '../../../core/services/mqtt.api.service';
 
 @Component({
   selector: 'app-chat-room-left-menu',
@@ -10,12 +10,12 @@ import { MqttService } from '../../../core/services/mqtt.service';
 })
 export class LeftMenuComponent implements OnInit {
 
-  constructor(private mqttService: MqttService) {
+  constructor(private mqttApiService: MqttApiService) {
 
   }
 
   ngOnInit() {
-    this.mqttService.getSessions().subscribe(
+    this.mqttApiService.getSubscriptions().subscribe(
       res => {
         console.log(res);
         let sub: Subscription = res;

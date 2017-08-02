@@ -8,10 +8,13 @@ import { Post } from '../models/post.model';
 import { Comment } from '../models/comment.model';
 
 @Injectable()
-export class MqttService {
+export class MqttApiService {
 
   private path: string = '/api';
   private authenticationToken: string = '';
+
+  private curr_page: number = 1;
+  private page_size: number = 100;
 
   constructor(private api: ApiService, private settingsService: SettingsService) {
     this.api.setApiUrl(this.settingsService.environment.mqttApiEndpoint);
@@ -22,9 +25,8 @@ export class MqttService {
 
   private getRequestOptions(authenticationToken: string) : RequestOptions {
     let headers = new Headers({ 
-        'Authorization': 'Basic ' + authenticationToken,
         'Content-type': 'application/json',
-        // 'Access-Control-Allow-Credentials': 'true'
+        'Accept': 'application/json',
       });
     return new RequestOptions({ headers: headers });
   }
@@ -51,28 +53,31 @@ export class MqttService {
 
   // /api/clients
   getClients() {
-    return this.api.getOpts(`${this.path}/clients`, this.getRequestOptions(this.authenticationToken));
+    const term = {curr_page: this.curr_page, page_size: this.page_size};
+    return this.api.get(`${this.path}/clients`, term);
   }
 
   // /api/sessions
   getSessions() {
-    const term = {curr_page: 1, page_size: 100};
+    const term = {curr_page: this.curr_page, page_size: this.page_size};
     return this.api.get(`${this.path}/sessions`, term);
   }
 
   // /api/topics
   getTopics() {
-    return this.api.getOpts(`${this.path}/topics`, this.getRequestOptions(this.authenticationToken));
+    return this.api.get(`${this.path}/topics`);
   }
 
   // /api/routes
   getRoutes() {
-    return this.api.getOpts(`${this.path}/routes`, this.getRequestOptions(this.authenticationToken));
+    const term = {curr_page: this.curr_page, page_size: this.page_size};
+    return this.api.get(`${this.path}/routes`, term);
   }
 
   // /api/subscriptions
   getSubscriptions() {
-    return this.api.getOpts(`${this.path}/subscriptions`, this.getRequestOptions(this.authenticationToken));
+    const term = {curr_page: this.curr_page, page_size: this.page_size};
+    return this.api.get(`${this.path}/subscriptions`, term);
   }
 
   // /api/plugins

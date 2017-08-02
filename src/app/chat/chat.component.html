@@ -1,30 +1,27 @@
 
-<div fxLayout="row" style="margin-top: 150px">
+<div fxLayout="row" style="margin-top: 10px">
   <div fxLayout="column" fxLayoutAlign="center center" fxFill>
 
-  <md-card class="chat-card">
-    <md-card-header>
-      <div md-card-avatar class="example-header-image"></div>
-      <md-card-title>대화방</md-card-title>
-      <md-card-subtitle>입장</md-card-subtitle>
-    </md-card-header>
-    <!--
-    <img md-card-image src="assets/img/examples/shiba2.jpg">
-    -->
-    <md-card-content>
+    <md-list>
+      <h3 md-subheader>Folders</h3>
+      <md-list-item *ngFor="let topic of topicList">
+        <md-icon md-list-icon>folder</md-icon>
+        <a routerLink="{{topic.topic | replace:'chat/room/':'' }}" routerLinkActive="active">
+          <h4 md-line>{{topic.topic}}</h4>
+        </a>
+        <p md-line> {{topic.count}} </p>
+      </md-list-item>
+      <!--
+      <md-divider></md-divider>
+      <h3 md-subheader>Notes</h3>
+      <md-list-item *ngFor="let note of notes">
+        <md-icon md-list-icon>note</md-icon>
+        <h4 md-line>{{note.name}}</h4>
+        <p md-line> {{note.updated | date}} </p>
+      </md-list-item>
+      -->
+    </md-list>
 
-      <md-input-container>
-        <input mdInput placeholder="대화 주제" [(ngModel)]="roomName">
-      </md-input-container>
-      <md-input-container>
-        <input mdInput placeholder="사용자 이름" [(ngModel)]="userName">
-      </md-input-container>
-
-    </md-card-content>
-    <md-card-actions>
-      <button md-raised-button (click)="enterTopic()">입장</button>
-    </md-card-actions>
-  </md-card>
-
+    <button md-raised-button (click)="createRoomDialog()">채팅방 만들기</button>
   </div>
 </div>
