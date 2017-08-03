@@ -31,6 +31,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log("clientId => " + this._mqttService.clientId);
     this._mqttService.state.subscribe(
       (res) => {
         if (res === MqttConnectionState.CONNECTED) {
@@ -61,7 +62,7 @@ export class ChatComponent implements OnInit {
       (err) => {
         console.log(err);
       }
-    )
+    );
   }
 
   ngAfterViewInit() {

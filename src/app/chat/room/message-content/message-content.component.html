@@ -1,7 +1,6 @@
-<p>
-  chat-content works!
-</p>
 
-<h1>{{mesage}}</h1>
-<h1>{{ myMessage }}</h1>
-<h1>{{(myOtherMessage$ | async)?.payload.toString()}}</h1>
+<div *ngFor="let msg of msgList">
+  <md-icon md-list-icon>folder</md-icon>
+  <h4 md-line>{{msg.content}}</h4>
+</div>
+

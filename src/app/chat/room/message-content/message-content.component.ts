@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { MqttMessage, MqttModule, MqttService } from 'ngx-mqtt';
 
 import { SettingsService } from '../../../core/services/settings.service';
+
+import { Message } from '../../../core/models/chat/message.model';
 
 @Component({
   selector: 'app-chat-room-message-content',
@@ -13,29 +15,29 @@ import { SettingsService } from '../../../core/services/settings.service';
 })
 export class MessageContentComponent implements OnInit {
 
-  public myMessage: string;
-  public myOtherMessage$: Observable<MqttMessage>;
+  public msgList: Array<Message>;
 
-  private roomName: string;
-  private sub: Subscription;
+  @Input() roomName: string;
 
   constructor(private _mqttService: MqttService, private route: ActivatedRoute, private settingsService: SettingsService) {
-    this.sub = this.route.params.subscribe(params => {
-       this.roomName = params['name'];
-
-       // In a real app: dispatch action to load the details here.
-    });
 
   }
 
   ngOnInit() {
     this._mqttService.observe(this.settingsService.environment.mtqqBaseTopicName+this.roomName).subscribe((message: MqttMessage) => {
-      this.myMessage = message.payload.toString();
-    });
-  }
+      let msg: Message = JSON.parse(message.payload.toString());
+      switch(msg.type) {
+        case "MSG":
+          this.msgList.push(msg);
+          break;
+        case "CMD":
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+          break;
+        default:
+
+          break;
+      }
+    });
   }
 
 }

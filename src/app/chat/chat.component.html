@@ -6,7 +6,7 @@
       <h3 md-subheader>Folders</h3>
       <md-list-item *ngFor="let topic of topicList">
         <md-icon md-list-icon>folder</md-icon>
-        <a routerLink="{{topic.topic | replace:'chat/room/':'' }}" routerLinkActive="active">
+        <a routerLink="{{topic.topic }}" routerLinkActive="active">
           <h4 md-line>{{topic.topic}}</h4>
         </a>
         <p md-line> {{topic.count}} </p>

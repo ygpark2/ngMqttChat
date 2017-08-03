@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { MqttMessage, MqttModule, MqttService } from 'ngx-mqtt';
+import { MqttMessage, MqttModule, MqttService, PublishOptions } from 'ngx-mqtt';
+
+import { Message } from '../../../core/models/chat/message.model';
 
 import { SettingsService } from '../../../core/services/settings.service';
+import { MqttChatService } from '../../../core/services/mqtt.chat.service';
 
 @Component({
   selector: 'app-chat-room-input-action',
@@ -13,36 +16,35 @@ import { SettingsService } from '../../../core/services/settings.service';
 })
 export class InputActionComponent implements OnInit {
 
-  private roomName: string;
-  private sub: Subscription;
+  @Input() roomName: string;
 
-  constructor(private _mqttService: MqttService, private route: ActivatedRoute, private settingsService: SettingsService) {
-    this.sub = this.route.params.subscribe(params => {
-       this.roomName = params['name'];
+  constructor(private mqttChatService: MqttChatService,
+              private route: ActivatedRoute,
+              private settingsService: SettingsService) {
 
-       // In a real app: dispatch action to load the details here.
-    });
   }
 
-  public unsafePublish(topic: string, message: string): void {
-    this._mqttService.unsafePublish(topic, message, {qos: 1, retain: true});
-  }
 
-  public publish(topic: string, message: string): Observable<void> {
-    return this._mqttService.publish(topic, message, {qos: 1, retain: true});
-  }
 
   ngOnInit() {
 
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    
   }
 
   public sendMsg(msg) {
     console.log(msg.value);
-    this.unsafePublish(this.settingsService.environment.mtqqBaseTopicName + this.roomName, msg.value);
+    let chatMsg: Message = {
+      id: 0,
+      type: "MSG",
+      content: msg.value,
+      createdBy: this.mqttChatService.clientId,
+      createdAt: new Date()
+    }
+    const topic = this.settingsService.environment.mtqqBaseTopicName + this.roomName;
+    this.mqttChatService.unsafePublish(topic, JSON.stringify(chatMsg));
     msg.value = "";
     msg.focus();
   }
