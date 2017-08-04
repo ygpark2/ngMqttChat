@@ -10,6 +10,7 @@ import { SettingsService } from './services/settings.service';
 import { AuthService } from './services/auth.service';
 import { PostService } from './services/post.service';
 import { MqttApiService } from './services/mqtt.api.service';
+import { MqttChatService } from './services/mqtt.chat.service';
 
 import { JWT } from './jwt';
 import { AuthGuard } from './auth.guard';
@@ -29,6 +30,7 @@ import { AuthGuard } from './auth.guard';
     AuthService,
     PostService,
     MqttApiService,
+    MqttChatService,
     JWT,
     AuthGuard
   ]

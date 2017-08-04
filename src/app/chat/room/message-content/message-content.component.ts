@@ -15,7 +15,7 @@ import { Message } from '../../../core/models/chat/message.model';
 })
 export class MessageContentComponent implements OnInit {
 
-  public msgList: Array<Message>;
+  public msgList: Array<Message> = [];
 
   @Input() roomName: string;
 
