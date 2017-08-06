@@ -1,7 +1,11 @@
 
+
 <div fxLayout="row" fxFill>
     <div fxFlex="85%" fxLayoutAlign="start center">
-        <textarea #msg mdInput rows="2" cols="120" placeholder="메세지"></textarea>
+        <md-input-container>
+            <textarea #msg mdInput rows="2" placeholder="메세지"></textarea>
+            <md-error>This field is required</md-error>
+        </md-input-container>
     </div>
     <div fxFlex="15%" fxLayoutAlign="start center"> 
         <button md-raised-button (click)="sendMsg(msg)">전송</button>

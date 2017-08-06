@@ -12,8 +12,13 @@ purple-green.css
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-    font-family: Roboto;
-    margin: 0px;
+  background: linear-gradient(135deg, #044f48, #2a7561);
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  overflow: hidden;
+  margin: 0px;
 }
 
 app-root { 

@@ -1,6 +1,26 @@
 
-<div *ngFor="let msg of msgList">
-  <md-icon md-list-icon>folder</md-icon>
-  <h4 md-line>{{msg.content}}</h4>
-</div>
+<md-list dir="rtl">
 
+  <md-list-item align="right" *ngFor="let msg of msgList">
+    <md-icon md-list-icon>folder</md-icon>
+    <div class="message">
+    <h4 md-line>{{msg.content}}</h4>
+    <p md-line> {{msg.createdAt | date}} </p>
+    </div>
+  </md-list-item>
+
+  <!--
+  <ng-container *ngFor="let msg of msgList">
+
+    <div class="message" [ngClass]="{'message-owner':mqttClientId === msg.createdBy}">
+      <ng-container *ngIf="mqttClientId !== msg.createdBy">
+      <figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg"></figure>
+      </ng-container>
+      {{msg.content}}
+      {{msg.createdBy}}
+      <div class="timestamp">22:42</div>
+    </div>
+  </ng-container>
+  -->
+
+</md-list>

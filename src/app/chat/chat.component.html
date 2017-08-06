@@ -1,27 +1,27 @@
 
-<div fxLayout="row" style="margin-top: 10px">
-  <div fxLayout="column" fxLayoutAlign="center center" fxFill>
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
 
-    <md-list>
-      <h3 md-subheader>Folders</h3>
-      <md-list-item *ngFor="let topic of topicList">
-        <md-icon md-list-icon>folder</md-icon>
-        <a routerLink="{{topic.topic }}" routerLinkActive="active">
-          <h4 md-line>{{topic.topic}}</h4>
-        </a>
-        <p md-line> {{topic.count}} </p>
-      </md-list-item>
-      <!--
-      <md-divider></md-divider>
-      <h3 md-subheader>Notes</h3>
-      <md-list-item *ngFor="let note of notes">
-        <md-icon md-list-icon>note</md-icon>
-        <h4 md-line>{{note.name}}</h4>
-        <p md-line> {{note.updated | date}} </p>
-      </md-list-item>
-      -->
-    </md-list>
+  <md-list>
+    <h3 md-subheader>Folders</h3>
+    <md-list-item *ngFor="let topic of topicList">
+      <md-icon md-list-icon>folder</md-icon>
+      <a routerLink="{{topic.topic}}" routerLinkActive="active">
+        <h4 md-line>{{topic.topic}}</h4>
+      </a>
+      <p md-line> {{topic.count}} </p>
+    </md-list-item>
 
-    <button md-raised-button (click)="createRoomDialog()">채팅방 만들기</button>
-  </div>
+    <!--
+    <md-divider></md-divider>
+    <h3 md-subheader>Notes</h3>
+    <md-list-item *ngFor="let note of notes">
+      <md-icon md-list-icon>note</md-icon>
+      <h4 md-line>{{note.name}}</h4>
+      <p md-line> {{note.updated | date}} </p>
+    </md-list-item>
+    -->
+
+  </md-list>
+
+  <button md-raised-button (click)="createRoomDialog()">채팅방 만들기</button>
 </div>

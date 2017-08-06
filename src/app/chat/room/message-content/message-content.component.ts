@@ -19,8 +19,10 @@ export class MessageContentComponent implements OnInit {
 
   @Input() roomName: string;
 
-  constructor(private _mqttService: MqttService, private route: ActivatedRoute, private settingsService: SettingsService) {
+  public mqttClientId: string;
 
+  constructor(private _mqttService: MqttService, private route: ActivatedRoute, private settingsService: SettingsService) {
+    this.mqttClientId = this._mqttService.clientId;
   }
 
   ngOnInit() {

@@ -3,6 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdInputModule, MdGridListModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
+import { NgxAutoScroll } from "ngx-auto-scroll/lib/ngx-auto-scroll.directive";
+import { FillHeightModule } from 'ngx-fill-height/fill-height.module';
 
 import { CommonModule } from '@angular/common';
 import { ChatRoutingModule } from './chat-routing.module';
@@ -21,11 +23,13 @@ import { CreateRoomComponent } from './create-room/create-room.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    FillHeightModule,
     MaterialModule,
     FlexLayoutModule,
     ChatRoutingModule
   ],
   declarations: [
+    NgxAutoScroll,
     ChatComponent,
     RoomComponent,
     TopicComponent,

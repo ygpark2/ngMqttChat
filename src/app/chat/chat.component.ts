@@ -50,7 +50,9 @@ export class ChatComponent implements OnInit {
             res => {
               console.log(res);
               let topic: Topic = res;
-              this.topicList = topic.result.filter((t) => t.topic.startsWith(this.settingsService.environment.mtqqBaseTopicName));
+              this.topicList = topic.result
+                              .filter((t) => t.topic.startsWith(this.settingsService.environment.mtqqBaseTopicName))
+                              .map((t) => t.topic.replace(this.settingsService.environment.mtqqBaseTopicName, ""));
               console.log(topic.result);
             },
             error => {

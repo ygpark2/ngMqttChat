@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-chat-room-top-bar',
@@ -9,7 +9,11 @@ export class TopBarComponent implements OnInit {
 
   @Input() roomName: string;
   
-  constructor() { }
+  constructor(private elRef: ElementRef) {
+    console.log(this.elRef.nativeElement.offsetHeight);
+    let toolbar = this.elRef.nativeElement.querySelector('md-toolbar')
+    console.log(toolbar);
+  }
 
   ngOnInit() {
   }

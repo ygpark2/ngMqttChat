@@ -1,24 +1,24 @@
 
-<div fxLayout="row" fxFill>
+<div fxLayout="row" fxFill class="chat-room">
     <div fxFlex="20%" fxLayoutAlign="center center">
 
-      <app-chat-room-left-menu [roomName]="roomName"></app-chat-room-left-menu>
+        <app-chat-room-left-menu [roomName]="roomName"></app-chat-room-left-menu>
 
     </div>
     <div fxFlex="80%" fxLayoutAlign="center center"> 
 
         <div fxLayout="column" fxFill>
-            <div fxFlex="5" fxLayoutAlign="center center">
+            <div fxFlex="5%" fxLayoutAlign="center center">
 
                 <app-chat-room-top-bar [roomName]="roomName" class="top-bar"></app-chat-room-top-bar>
 
             </div>
-            <div fxFlex="85" fxLayoutAlign="center center"> 
+            <div fxFlex="" fxLayoutAlign="start center" class="messages" ngx-auto-scroll lock-y-offset="10" observe-attributes> 
 
                 <app-chat-room-message-content [roomName]="roomName"></app-chat-room-message-content>
 
             </div>
-            <div fxFlex="10" fxLayoutAlign="center center">
+            <div fxFlex="10%" fxLayoutAlign="center center">
 
                 <app-chat-room-input-action [roomName]="roomName"></app-chat-room-input-action>
 

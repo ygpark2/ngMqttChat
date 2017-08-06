@@ -17,7 +17,7 @@
       <md-icon> menu </md-icon>
     </button>
     <button md-button routerLinkActive="active" routerLink="/chat"> CHAT </button>
-    <span class="example-spacer"></span>
+    <span class="toolbar-spacer"></span>
     <span [appShowAuthed]="false">
       <button md-button routerLinkActive="active" routerLink="/signin"> SIGN IN </button>
       <button md-button routerLinkActive="active" routerLink="/signup"> SIGN UP </button>
@@ -27,20 +27,22 @@
     </span>
   </md-toolbar>
 
-  <div fxLayout="row" fxFill>
-    <div fxFlex="100%" fxLayoutAlign="center center" fill-height [footerElement]="footerRef"> 
-
+  <div fill-height>
       <router-outlet></router-outlet>
+  </div>
+
+    <!--
+  <div fxLayout="column" fxFill>
+    <div fxFlex="" fxLayoutAlign="center center"> 
+
 
     </div>
+
     <div fxFlex="100%" fxLayoutAlign="center center" #footerRef>
       Footer
-      <!--
-      <app-footer></app-footer>
-      -->
-
-
     </div>
+
   </div>
+    -->
 
 </md-sidenav-container>
