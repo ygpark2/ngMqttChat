@@ -2,8 +2,8 @@
 
 <div fxLayout="row" fxFill>
     <div fxFlex="85%" fxLayoutAlign="start center">
-        <md-input-container>
-            <textarea #msg mdInput rows="2" placeholder="메세지"></textarea>
+        <md-input-container [style.width]="'100%'">
+            <textarea #msg mdInput rows="2" placeholder="메세지" [style.width]="'100%'"></textarea>
             <md-error>This field is required</md-error>
         </md-input-container>
     </div>

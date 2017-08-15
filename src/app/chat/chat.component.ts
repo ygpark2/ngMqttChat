@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { MqttMessage, MqttModule, MqttService, MqttServiceOptions, MqttConnectionState } from 'ngx-mqtt';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 
@@ -25,11 +25,35 @@ export class ChatComponent implements OnInit {
               private mqttApiService: MqttApiService,
               private settingsService: SettingsService,
               private dialog: MdDialog,
-              private router: Router) {
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
+
+    console.log("======================================");
+    console.log("constructor!!!!!!!!!!!!!!!!!!");
+
+    this.router.events.filter((event) => event instanceof NavigationEnd).map(() => this.activatedRoute).subscribe((event) => {
+      console.log('NavigationEnd : ', event);
+
+      this.mqttApiService.getTopics().subscribe(
+        res => {
+          console.log(res);
+          console.log("topic Name => " + this.settingsService.environment.mtqqBaseTopicName);
+          let topic: Topic = res;
+          this.topicList = topic.result
+                          .filter((t) => t.topic.startsWith(this.settingsService.environment.mtqqBaseTopicName))
+                          .map((t) => {t.topic = t.topic.replace(this.settingsService.environment.mtqqBaseTopicName, ""); return t;});
+          console.log(this.topicList);
+        },
+        error => {
+          // this.errorMessage = <any>error
+        }
+      );
+    });
 
   }
 
   ngOnInit() {
+
 
     console.log("clientId => " + this._mqttService.clientId);
     this._mqttService.state.subscribe(
@@ -46,19 +70,6 @@ export class ChatComponent implements OnInit {
             }
           );
 
-          this.mqttApiService.getTopics().subscribe(
-            res => {
-              console.log(res);
-              let topic: Topic = res;
-              this.topicList = topic.result
-                              .filter((t) => t.topic.startsWith(this.settingsService.environment.mtqqBaseTopicName))
-                              .map((t) => t.topic.replace(this.settingsService.environment.mtqqBaseTopicName, ""));
-              console.log(topic.result);
-            },
-            error => {
-              // this.errorMessage = <any>error
-            }
-          );
         }
       },
       (err) => {

@@ -26,20 +26,12 @@ export class MessageContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._mqttService.observe(this.settingsService.environment.mtqqBaseTopicName+this.roomName).subscribe((message: MqttMessage) => {
-      let msg: Message = JSON.parse(message.payload.toString());
-      switch(msg.type) {
-        case "MSG":
-          this.msgList.push(msg);
-          break;
-        case "CMD":
-
-          break;
-        default:
-
-          break;
-      }
-    });
+    this._mqttService.observe(this.settingsService.environment.mtqqBaseTopicName+this.roomName)
+      .map(data => { let msg: Message = JSON.parse(data.payload.toString()); return msg; })
+      .filter(msg => msg.type === "MSG")
+      .subscribe((message: Message) => {
+          this.msgList.push(message);
+      });
   }
 
 }

@@ -1,6 +1,13 @@
 
+:host /deep/ .mat-input-wrapper {
+    padding-bottom: 0;
+}
+
 textarea {
     border: 0px;
-    width: calc(100% -10px);
+    width : 95%; /* 구식 브라우저를 위한 대비책(fallback) */
+    width : -webkit-calc(100% - 20px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 20px); /* for Firefox */
+    width :         calc(100% - 20px); /* for IE */
     padding: 5px; 
 }

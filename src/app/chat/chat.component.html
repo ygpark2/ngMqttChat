@@ -2,13 +2,17 @@
 <div fxLayout="column" fxLayoutAlign="center center" fxFill>
 
   <md-list>
-    <h3 md-subheader>Folders</h3>
+    <h3 md-subheader>대화 목록</h3>
     <md-list-item *ngFor="let topic of topicList">
-      <md-icon md-list-icon>folder</md-icon>
-      <a routerLink="{{topic.topic}}" routerLinkActive="active">
-        <h4 md-line>{{topic.topic}}</h4>
-      </a>
+      <md-icon md-list-icon>textsms</md-icon>
+
+      <h4 md-line>
+        <a [routerLink]="['../', 'room', topic.topic]" routerLinkActive="active">
+          {{topic.topic}}
+        </a>
+      </h4>
       <p md-line> {{topic.count}} </p>
+
     </md-list-item>
 
     <!--

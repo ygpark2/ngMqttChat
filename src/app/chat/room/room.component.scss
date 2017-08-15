@@ -16,11 +16,14 @@
 
     .messages {
         overflow-y: scroll;
-        background: linear-gradient(135deg, #044f48, #2a7561);
+        // background: linear-gradient(135deg, #044f48, #2a7561);
+        background: linear-gradient(135deg, #1e6d61, #666b6b);
         // flex: 1 1 auto;
         flex: 1 1 auto;
         color: rgba(255, 255, 255, .5);
-        overflow: hidden;
+        // overflow: hidden;
+        // ::-webkit-scrollbar {display:none;}
+
         position: relative;
         width: 100%;
         // position: absolute;

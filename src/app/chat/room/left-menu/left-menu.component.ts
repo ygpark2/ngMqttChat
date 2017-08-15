@@ -7,6 +7,8 @@ import { SubscriptionResult } from '../../../core/models/mqtt/results/subscripti
 import { MqttApiService } from '../../../core/services/mqtt.api.service';
 import { SettingsService } from '../../../core/services/settings.service';
 
+import { Message } from '../../../core/models/chat/message.model';
+
 @Component({
   selector: 'app-chat-room-left-menu',
   templateUrl: './left-menu.component.html',
@@ -25,26 +27,14 @@ export class LeftMenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._mqttService.state.subscribe(
-      (res) => {
-        if (res === MqttConnectionState.CONNECTED) {
-          this.mqttApiService.getSubscriptions().subscribe(
-            res => {
-              console.log(res);
-              let sub: Subscription = res;
-              this.participants = sub.result.filter((val) => val.topic.endsWith(this.roomName));
-              console.log(sub.result);
-            },
-            error => {
-              // this.errorMessage = <any>error
-            }
-          );
-        }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+
+    this._mqttService.observe(this.settingsService.environment.mtqqBaseTopicName+this.roomName)
+      .map(data => { let msg: Message = JSON.parse(data.payload.toString()); return msg; })
+      .filter(msg => msg.type === "CMD")
+      .subscribe((message: Message) => {
+          // this.msgList.push(message);
+      });
+
   }
 
 }

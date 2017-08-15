@@ -11,7 +11,7 @@ import { Comment } from '../models/comment.model';
 @Injectable()
 export class MqttChatService {
 
-  private mqttMsgOption: PublishOptions = {qos: 1, retain: true};
+  private mqttMsgOption: PublishOptions = {qos: 1, retain: false};
 
   constructor(private _mqttService: MqttService, private settingsService: SettingsService) {
 

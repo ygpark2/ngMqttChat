@@ -1,12 +1,20 @@
 
-<md-list dir="rtl">
+<!--
+<div fxLayout="column" fxFill  >
 
-  <md-list-item align="right" *ngFor="let msg of msgList">
-    <md-icon md-list-icon>folder</md-icon>
-    <div class="message">
-    <h4 md-line>{{msg.content}}</h4>
-    <p md-line> {{msg.createdAt | date}} </p>
+  <div fxFlex="" fxLayoutAlign="start center">
+  -->
+  
+<md-list [style.width]="'inherit'">
+
+  <md-list-item dir="{{ mqttClientId === msg.createdBy ? 'rtl' : 'ltl' }}" *ngFor="let msg of msgList">
+    <md-icon md-list-icon>person</md-icon>
+
+    <div md-line>
+      <div class="message" [ngClass]="{'message-owner': mqttClientId === msg.createdBy}">{{msg.content}}</div>
     </div>
+    <p md-line class="timestamp"> {{msg.createdAt | date}} </p>
+
   </md-list-item>
 
   <!--
@@ -24,3 +32,9 @@
   -->
 
 </md-list>
+
+<!--
+  </div>
+
+</div>
+-->
